@@ -1,0 +1,32 @@
+#highlight:hover {
+  padding: 12px;
+  border: 1px solid white;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  border-bottom: 2px solid transparent;
+}
+
+p {
+  color: white;
+}
+
+.menu-list {
+  color: white;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  flex: 1;
+}
+
+.carousel-item{
+  height: 400px;
+  object-fit: contain;
+} 
+/* .carousel-item img{
+  height: 700px;
+} */
+
+.carousel-control-prev, .carousel-control-next {
+  margin-bottom: 40px;
+}

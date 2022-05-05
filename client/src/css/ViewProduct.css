@@ -1,0 +1,123 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    justify-content: space-between;
+    margin-top: 50px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+.container {
+    width: 750px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+#carousel {
+    width: 700px;
+}
+
+.carousel-control-next,
+.carousel-control-prev /*, .carousel-indicators */ {
+    filter: invert(100%);
+}
+
+.container-2 {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+.item-title-info {
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    justify-content: space-between;
+    margin-left: 25px;
+}
+
+.prime {
+    width: 100px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.price-info {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    margin-left: 25px;
+    margin-bottom: 30px;
+    margin-top: 25px;
+}
+.price-info-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    height: 50px;
+    margin-left: 25px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.price {
+    font-weight: bold;
+    font-size: 20px;
+    color: #B12704!important
+}
+
+.brand-info {
+    margin-top: 10px;
+    margin-left: 25px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.brand {
+    margin-bottom: 25px;
+}
+
+.description {
+    margin-top: 20px;
+    margin-left: 25px;
+}
+
+.description-header {
+    margin-bottom: 25px;
+}
+
+.container-3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border: 1px solid #ccc!important;
+    border-radius: 16px;
+    width: 50%;
+    margin-left: 30px;
+    margin-right: 20px;
+}
+
+#add-to-cart {
+    margin-top: 30px;
+    width: 100%;
+    border-radius: 25px;
+    margin-bottom: 20px
+}
+
+.buy-new {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 200px;
+    align-items: center;
+}
+
+.buy-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 30%;
+} 
