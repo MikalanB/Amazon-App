@@ -33,7 +33,8 @@ This application is a clone of the Amazon Website. This project is a passion pro
   🔨 Option to pay using Stripe Checkout and thus creating a new order and emptying the cart after payment is successful.
   🔨 Option to view all your past orders along with the bill amount for each.
   
-  # How to Install
+  # How to Install 
+  *** PLEASE INSTALL NODEJS IF NOT ALREADY INSTALLED) ***
   1. Clone this repository or download the project folder to your computer from GitHub
   2. Open the project in VS Code or your desired IDE.
   3. Open two terminal windows
