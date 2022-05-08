@@ -11,7 +11,7 @@ This application is a clone of the Amazon Website. This project is a passion pro
 - NodeJS
 - Bootstrap
 - Material UI
-- toreJS (local storage NPM package)
+- StoreJS (local storage NPM package)
 - VS Code Editor
 - Stripe API 
 - socket.io Client (Coming Soon!)
