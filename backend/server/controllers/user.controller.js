@@ -1,7 +1,8 @@
 const User = require('../models/user.model');
 require('dotenv').config();
 const jwt = require("jsonwebtoken");
-console.log("waaazaaa")
+const bcrypt = require("bcrypt");
+console.log("hello")
 
 module.exports.findAll = (req, res) => {
     User.find({})
@@ -66,38 +67,67 @@ module.exports.updateOne = (req, res) => {
         }))
 }
 
-module.exports.login = (req, res) => {
-    login = async(req, res) => {
-        const user = await User.findOne({ email: req.body.email }); //see if the user exists in db
+module.exports.login = async(req, res) => {
+    
+    const user = await User.findOne({ email: req.body.email }); //see if the user exists in db
 
-        if(user === null) {
-            // email not found in users collection
-            return res.json({error: "User not found. Who YOU?!"})
-        }
-    
-        // if we made it this far, we found a user with this email address
-        // let's compare the supplied password to the hashed password in the database
-        const correctPassword = await bcrypt.compare(req.body.password, user.password);
-    
-        if(!correctPassword) {
-            // password wasn't a match!
-            return res.json({error: "Password is incorrect!"})
-        }
-    
-        // if we made it this far, the password was correct
-        const userToken = jwt.sign({
-            id: user._id,
-            firstName: user.firstName
-        }, process.env.SECRET_KEY);
-    
-        // note that the response object allows chained calls to cookie and json
-        res
-            .cookie("usertoken", userToken, process.env.SECRET_KEY, {
-                httpOnly: true
-            })
-            .json({ msg: "success!" });
+    if(user === null) {
+        // email not found in users collection
+        return res.json({error: "User not found. Who YOU?!"})
     }
+
+    // if we made it this far, we found a user with this email address
+    // let's compare the supplied password to the hashed password in the database
+    const correctPassword = await bcrypt.compare(req.body.password, user.password);
+
+    if(!correctPassword) {
+        // password wasn't a match!
+        return res.json({error: "Password is incorrect!"})
+    }
+
+    // if we made it this far, the password was correct
+    const userToken = jwt.sign({
+        id: user._id,
+        firstName: user.firstName
+    }, process.env.SECRET_KEY);
+
+    // note that the response object allows chained calls to cookie and json
+    res
+        .cookie("usertoken", userToken, process.env.SECRET_KEY, {
+            httpOnly: true
+        })
+        .json({ msg: "success!" });
 }
+// (req, res) => {
+//     console.log("hello")
+//     console.log(req.body)
+//     User.findOne({email: req.body.email})
+//             .then(user=>{
+//                 if(user === null){
+//                     res.json({msg: "User not found. Please try again."})    
+//                 } else {
+//                     console.log("we made it here")
+//                     bcrypt.compare(req.body.password, user.password)
+//                     //console.log("password is: ", user.password)
+//                         .then(passwordIsValid=>{
+//                             console.log("password is valid: ", passwordIsValid)
+//                             if(passwordIsValid){
+//                                 console.log("password is valid")
+//                                 res.cookie("usertoken", jwt.sign({
+//                                     _id: user._id,
+//                                     firstName: user.firstName
+//                                 }, process.env.SECRET_KEY), {httpOnly:true})
+//                                 .json({msg: "success!", user: user});
+//                             }else{
+//                                 console.log("password is not valid")
+//                                 res.json({msg: "invalid login attempt- password incorrect"})
+//                             }
+//                         })
+//                         .catch(err=> res.json({msg: "invalid login attempt", err}) )
+//                 }
+//             })
+//             .catch(err=> res.json(err))
+// }
 
 module.exports.logout = (req, res) => {
     res.clearCookie("usertoken");

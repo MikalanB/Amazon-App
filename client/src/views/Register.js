@@ -6,7 +6,9 @@ import BasicMenu from '../components/BasicMenu';
 import axios from 'axios';
 import {useHistory} from 'react-router-dom';
 import RegisterForm from '../components/RegisterForm';
+import AuthContext from '../context/AuthContext';
 import { Auth } from 'aws-amplify';
+import { useContext } from 'react';
 var store = require('store')
 
 const Register = (props) => {
@@ -38,7 +40,8 @@ const Register = (props) => {
     //     }
     // }
 
-    const [loggedInUser, setLoggedInUser] = useState({}); 
+    const {loggedInUser, setLoggedInUser} = useContext(AuthContext); 
+    // const [loggedInUser, setLoggedInUser] = useState({});
 
 
     const history = useHistory();
@@ -59,7 +62,7 @@ const Register = (props) => {
             .then(res => {
                 console.log("successful", res)
                 setLoggedInUser(res.data.results)
-                store.set("user", loggedInUser)
+                //store.set("user", loggedInUser)
                 history.push("/")
             })
             .catch(err => console.error(err))

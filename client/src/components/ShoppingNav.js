@@ -109,7 +109,7 @@ export default function TemporaryDrawer(props) {
             <ListItem button component="button" onClick={logoutProp}>
                 <ListItemText primary="Sign out" sx={{marginLeft: '10px'}} />
             </ListItem>
-            : <ListItem button component={Link} to="/sign-out">
+            : <ListItem button component={Link} to="/signin">
                 <ListItemText primary="Sign In" sx={{marginLeft: '10px'}} />
             </ListItem>}
         </List>

@@ -24,9 +24,9 @@ var store = require('store')
 
 function App() {
 
-  const [basket, setBasket] = useState([])
+  const [basket, setBasket] = useState([]);
   const [loggedInUser, setLoggedInUser] = useState({});
-  const cart = store.get('cart');
+  const cart = store.set('cart', basket);
 
   const history = useHistory();
 

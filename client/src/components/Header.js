@@ -30,11 +30,11 @@ const Header = (props) => {
     useEffect(()=>{
         axios.get("http://localhost:8000/api/users/getLoggedInUser", {withCredentials:true})
             .then(res=>{
-                console.log("Successfully logged in user", res)
+                console.log("Successfully logged in user", res.data.results)
                 if(res.data.results){
                     //this means the user is logged in and can accees this page
                     setLoggedInUser(res.data.results)
-                    //store.set('user', loggedInUser)
+                    store.set('user', loggedInUser)
                 }
             })
             .catch(err=>{
@@ -43,14 +43,14 @@ const Header = (props) => {
                 history.push("/")
     
             })
-    }, [loggedInUser])
+    }, [])
 
     const logout = ()=>{
         axios.get("http://localhost:8000/api/users/logout", {withCredentials:true})
             .then(res=>{
                 store.remove('user')
-                store.remove('cart')
-                setLoggedInUser({})
+                store.set('cart', [])
+                setLoggedInUser(null)
                 history.push("/")
             })
             .catch(err=>{
@@ -58,6 +58,7 @@ const Header = (props) => {
             })
         }
 
+    console.log(loggedInUser)
 
     return (
         <div className="App">

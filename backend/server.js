@@ -13,17 +13,10 @@ app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 app.use(cookieParser());
 
 require('./server/config/mongoose.config');
-// require('./server/models/user.model');
-// require('./server/models/order.model');
-// require('./server/models/product.model');
 
-
-
-require("./server/routes/product.routes")(app);
 require("./server/routes/user.routes")(app);
+require("./server/routes/product.routes")(app);
 require("./server/routes/order.routes")(app);
-
-
 
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

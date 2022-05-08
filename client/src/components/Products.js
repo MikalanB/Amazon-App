@@ -11,19 +11,6 @@ const Products = (props) => {
     const history = useHistory();
 
     useEffect(()=>{
-        // axios.get("http://localhost:8000/api/users/getLoggedInUser", {withCredentials:true})
-        //     .then(res=>{
-        //         console.log("Successfully logged in user", res)
-        //         if(res.data.results){
-        //             //this means the user is logged in and can accees this page
-        //             setLoggedInUser(res.data.results)
-        //         }
-        //     })
-        //     .catch(err=>{
-        //         //this means someone who is not logged in tried to access the dashboard
-        //         console.log("err when getting logged in user", err)
-        //         history.push("/")
-        //     })
         axios.get("http://localhost:8000/api/products/all")
             .then(res=> {
                 console.log(res.data)
