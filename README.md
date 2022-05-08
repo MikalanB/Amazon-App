@@ -39,11 +39,11 @@ This application is a clone of the Amazon Website. This project is a passion pro
   3. Open two terminal windows
   4. In the first terminal, navigate to the "backend" folder and enter:
   ### `npm i`
-  5. After dependencies have been installed, enter:
+  5. After all the dependencies have been installed, enter:
   ### `nodemon server.js`
-  6. Open your second teerminal window and navigate to the "client" folder and enter
+  6. Open your second terminal window and navigate to the "client" folder and enter
   ### `npm start`
-  7. The application will the start running natively on port 3000. You should be able to access the application by navigating to: http:/localhost:3000
+  7. The application will the start running in developer mode natively on port 3000. You should be able to access the application by navigating to: http:/localhost:3000
 
 # Contact Me
 email: mikalanballentine@gmail
