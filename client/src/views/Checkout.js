@@ -1,20 +1,27 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import CartContext from '../context/CartContext';
 import "../css/Checkout.css";
-import "../css/cart.css"
 import {Link} from 'react-router-dom'
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import LockIcon from '@mui/icons-material/Lock';
+import { Divider } from '@mui/material';
+//import AuthContext from '../context/AuthContext';
+import AddIcon from '@mui/icons-material/Add';
+import axios from 'axios';
+import { useHistory } from 'react-router-dom';
+import AddressForm from '../components/AddressForm';
 var store = require('store')
 
 
-const Checkout = (props) => {
+const Checkout = () => {
 
+    // const {loggedInUser, setLoggedInUser} = useContext(AuthContext);
     const {basket, setBasket} = useContext(CartContext)
     var cart = store.get('cart');
     var total = store.get("total")
+    var user = store.get('user');
 
     const onDeleteHandler = (index) => {
         console.log(index);
@@ -52,22 +59,104 @@ const Checkout = (props) => {
         return total;
     }
 
+    const [form, setForm] = useState({
+        fullName: user.address[0],
+        phoneNumber: user.address[1],
+        address1: user.address[2],
+        address2: user.address[3],
+        city: user.address[4],
+        stateLoc: user.address[5],
+        zipCode: user.address[6],
+        country: user.address[7],
+        defaultAddress: user.address[8]
+    });
+
+    const history = useHistory();
+
+    const onChangeHandler = (event) => {
+        setForm({
+            ...form,
+            [event.target.name]: event.target.type === "checkbox" ? event.target.checked : event.target.value
+        })
+    }
+
+    const onSubmitHandler = (event) => {
+        event.preventDefault();
+        
+        console.log("Successful")
+
+        const userForm = store.get("user");
+        userForm.address = [form.fullName, form.phoneNumber, form.address1, form.address2, form.city, form.stateLoc, form.zipCode, form.country, form.defaultAddress];
+        console.log(userForm);
+
+        axios.put(`http://localhost:8000/api/users/${user._id}/`, userForm)
+            .then(res => {
+                console.log(res)
+                store.set("user", userForm);
+                history.push("/displayCheckout")
+            })
+            .catch(err => console.error(err))
+    }
+
+    console.log(user.address)
 
     return (
-            // {/* <div className="header__checkout">
-            // <img
-            //     className="login__logo"
-            //     src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png' alt="logo"
-            //     />
-            // </div> */}
-            <div>
-                <div className="checkoutProduct">
-                    <img className="checkoutProduct__image" src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png' alt="logo"/>
-                    <h1>Checkout {cart?.length == 1 ? <span> 1 item</span> : <span>{cart?.length} items</span>}</h1>
-                    <LockIcon sx={{marginRight: "10px"}}/>
-                </div>
-                <div className="checkoutLayout">
-                    <div className="cart-container">
+        <div>
+            <div className="checkoutProduct">
+                <Link to="/"><img className="checkoutProduct__image" src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png' alt="logo"/></Link>
+                <h3>Checkout {cart?.length === 1 ? <span> 1 item</span> : <span>{cart?.length} items</span>}</h3>
+                <LockIcon sx={{marginRight: "10px"}}/>
+            </div>
+            <div className="checkoutLayout">
+                <div className="checkout_information">
+                    <div className="shipping__container">
+                        <div className="checkout__header" style={{marginTop: "10px"}}>
+                            <h4>1</h4>
+                            <h4 style={{marginLeft: "30px"}}>Shipping Address</h4>
+                        </div> 
+                        <div className="shipping_information">
+                            {
+                                user.address?.length < 1
+                                ? <span>
+                                    <AddressForm form={form} onSubmitProp={onSubmitHandler} onChangeHandlerProp={onChangeHandler}/>
+                                    </span>
+                                
+                                : <span className="customer_address">
+                                    <p className="my-auto">{user.address[0]},</p>
+                                    <p className="my-auto">{user.address[2]?.toUpperCase()} {user.address[3]?.toUpperCase()} </p>
+                                    <p className="my-auto">{user.address[4]?.toUpperCase()}, {user.address[5]?.toUpperCase()} {user.address[6]}</p>
+                                </span>
+                            }
+                        </div>
+                        {user.address?.length > 1
+                        ? <span>  
+                            <AddressForm form={form} onSubmitProp={onSubmitHandler} onChangeHandlerProp={onChangeHandler}/>
+                        </span>
+                        : <span></span>}
+                    </div>
+                    <Divider sx={{marginBottom: "10px"}}/>
+                    <div className="paymentMethod__container">
+                        <div className="checkout__header">
+                            <h4>2</h4>
+                            <h4 style={{marginLeft: "30px"}}>Payment Method</h4>
+                        </div>
+                        <div className="payment_method_section">
+                            <div className="payment_method">
+                                <h4>Payment Method</h4>
+                                <div className="payment_method_options">
+                                    <div className="payment_method_option">
+                                        <FormControlLabel className="payment_method_option_label"   control={<Checkbox />} label="Pay with Amazon Pay" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <Divider sx={{marginBottom: "10px"}}/>
+                    <div className="checkout__header">
+                        <h4>3</h4>
+                        <h4 style={{marginLeft: "30px"}}>Review Items and shipping</h4>
+                    </div>
+                    <div className="cart_container">
                         { cart?.length !== 0 ? <span>
                             {cart.map((item, i) => {
                                 return <div key={i} className="prod-container">
@@ -120,13 +209,12 @@ const Checkout = (props) => {
                             })} </span>
                         : <h2 style= {{display: 'flex', justifyContent: 'center', alignItems: 'center', height: 100}}>Your Cart is empty! </h2> }
                     </div>
+                </div>
 
-                    <div className="checkout-box">
+                <div className="checkout-box">
                     <div className="total">
                         <span>Subtotal ({cart?.length < 2 && cart?.length > 1 ? <span>{`${cart.length} item`}</span>  : <span>{`${cart.length} items`}</span>}):</span>
-                    <span className="price" >
-                        ${total}
-                    </span>
+                        <span className="price">${total}</span>
                     </div>
                     <FormGroup style={{textAlign: "left"}}>
                         <FormControlLabel control={<Checkbox defaultChecked />} label="This order contains a gift" />
