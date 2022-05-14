@@ -27,7 +27,7 @@ This application is a clone of the Amazon Website. This project is a passion pro
 6. Search Function - this allows customers to search for products currently available for purchase
 
 
-#Features in Progress:
+# Features in Progress:
 
  1. 🔨 Implementation of Customer Service Feature to allow users to speak with a representative about their orders
  2. 🔨 Option to pay using Stripe Checkout and thus creating a new order and emptying the cart after payment is successful.
