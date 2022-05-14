@@ -28,7 +28,7 @@ const UserSchema = new mongoose.Schema({
     },
     address: {
         type: Array,
-        minLength: [5, "Address must be at least 5 characters long"]
+        minLength: [1, "Address must be at least 1"]
     },
     order_id: {
         type: mongoose.Schema.Types.ObjectId,
