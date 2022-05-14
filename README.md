@@ -24,11 +24,11 @@ This application is a clone of the Amazon Website. This project is a passion pro
 3. Option to add items or remove items from the cart for the user.
 4. Display the total bill of the cart and update it as soon as the cart is updated by the user.
 5. StoreJS Local Storage to store the JWT so that only logged-in users are allowed to buy items.
+6. Search Function - this allows customers to search for products currently available for purchase
 
 
 #Features in Progress:
 
-  🔨 Search Function - this will allow customers to search for products
   🔨 Implementation of Customer Service Feature to allow users to speak with a representative about their orders
   🔨 Option to pay using Stripe Checkout and thus creating a new order and emptying the cart after payment is successful.
   🔨 Option to view all your past orders along with the bill amount for each.
