@@ -29,9 +29,9 @@ This application is a clone of the Amazon Website. This project is a passion pro
 
 #Features in Progress:
 
-  🔨 Implementation of Customer Service Feature to allow users to speak with a representative about their orders
-  🔨 Option to pay using Stripe Checkout and thus creating a new order and emptying the cart after payment is successful.
-  🔨 Option to view all your past orders along with the bill amount for each.
+ 1. 🔨 Implementation of Customer Service Feature to allow users to speak with a representative about their orders
+ 2. 🔨 Option to pay using Stripe Checkout and thus creating a new order and emptying the cart after payment is successful.
+ 3. 🔨 Option to view all your past orders along with the bill amount for each.
   
   # How to Install 
   *** PLEASE INSTALL NODEJS IF NOT ALREADY INSTALLED) ***
