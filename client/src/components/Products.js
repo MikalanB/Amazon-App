@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
 const Products = (props) => {
-    const [loggedInUser, setLoggedInUser] = useState({});
     const [ products, setProducts ] = useState([])
 
     const history = useHistory();

@@ -21,7 +21,6 @@ var store = require('store')
 
 const Header = (props) => {
     const cart = store.get('cart');
-    const user = store.get('user')
 
     const {loggedInUser, setLoggedInUser} = useContext(AuthContext);
 
@@ -69,9 +68,9 @@ const Header = (props) => {
                         src="http://pngimg.com/uploads/amazon/amazon_PNG11.png" /></Link>
 
 
-                <div className="header__search">
+                <div className="header__searchbox">
                     <Search />
-                    <input className="header__searchInput" type="text" />
+                    {/* <input className="header__searchInput" type="text" /> */}
                     <SearchIcon className="header__searchIcon" />
                 </div>
 
@@ -90,9 +89,18 @@ const Header = (props) => {
                 </div>
 
 
-                    <div className="header__option">
+                    <div className="header__option1">
+                    { loggedInUser ? 
+                        <Link to="/orders">
                         <span className="header__optionLineOne">Returns</span>
                         <span className="header__optionLineTwo">& Orders</span>
+                        </Link>
+                    :
+                        <Link to="/signin">
+                        <span className="header__optionLineOne">Returns</span>
+                        <span className="header__optionLineTwo">& Orders</span>
+                        </Link>
+                    }
                     </div>
 
 
