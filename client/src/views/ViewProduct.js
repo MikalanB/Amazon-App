@@ -35,7 +35,7 @@ const ViewProduct = (props) => {
     const onSubmitHandler = (event) => {
         event.preventDefault();
 
-        console.log("plau?")
+        console.log("successfully added to cart")
 
         const item = {
             _id: product._id, 

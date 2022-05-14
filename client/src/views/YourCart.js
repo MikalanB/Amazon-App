@@ -13,7 +13,7 @@ const YourCart = (props) => {
     var cart = store.get('cart');
     var total = store.get("total")
     
-
+    // delete item from cart
     const onDeleteHandler = (index) => {
         console.log(index);
     
@@ -24,6 +24,7 @@ const YourCart = (props) => {
         store.set('total', subTotal(copyState));
     }
 
+    
     const onUpdateQty = (e, index) => {
         total = store.get("total")
         const cartItems = cart[index];
@@ -49,6 +50,8 @@ const YourCart = (props) => {
         store.set('total', total);
         return total;
     }
+
+    console.log("This is the cart" + cart.length)
 
     return(
         <div className="wrapper">

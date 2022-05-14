@@ -26,9 +26,7 @@ function App() {
 
   const [basket, setBasket] = useState([]);
   const [loggedInUser, setLoggedInUser] = useState({});
-  const cart = store.set('cart', basket);
-
-  const history = useHistory();
+  //const cart = store.set('cart', basket);
 
   return (
     <div className="App">
