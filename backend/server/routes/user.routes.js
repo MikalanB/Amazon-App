@@ -7,9 +7,9 @@ module.exports = app => {
     app.post("/api/users/login", UserController.login)
     app.get("/api/users/getLoggedInUser", authenticate, UserController.getLoggedInUser)
     app.get("/api/users/logout", UserController.logout)
+    app.put("/api/users/:_id", UserController.updateOne)
     // app.get("/api/users/:_id", UserController.findOne)
     // app.delete("/api/users/:_id", UserController.deleteOne)
-    // app.put("/api/users/:_id", UserController.updateOne)
 
     // show all the orders for a user
     app.get("/api/users/orders/:order_id", UserController.findOrders);
