@@ -7,17 +7,15 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import LockIcon from '@mui/icons-material/Lock';
 import { Divider } from '@mui/material';
-//import AuthContext from '../context/AuthContext';
-import AddIcon from '@mui/icons-material/Add';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import AddressForm from '../components/AddressForm';
+import Paypal from '../components/Paypal';
 var store = require('store')
 
 
 const Checkout = () => {
 
-    // const {loggedInUser, setLoggedInUser} = useContext(AuthContext);
     const {basket, setBasket} = useContext(CartContext)
     var cart = store.get('cart');
     var total = store.get("total")
@@ -98,7 +96,26 @@ const Checkout = () => {
             .catch(err => console.error(err))
     }
 
-    console.log(user.address)
+    const [order, setOrder] = useState({
+        orderID: "111-" + String(Math.floor((Math.random() * 99999))) + "-" + String(Math.floor(Math.random() * 9999999)),
+        order_date: new Date(),
+        items_ordered: [cart],
+        deliveryAddress: user.address,
+        order_total: total,
+        user_id: user._id
+    })
+
+    console.log(order);
+
+    const placeOrder = () => {
+        axios.post("http://localhost:8000/api/orders/create", order)
+            .then(res => {
+                console.log(res)
+                store.set("cart", []);
+                history.push("/orderConfirmation")
+            })
+            .catch (err => {console.log(err)})
+    }
 
     return (
         <div>
@@ -142,11 +159,8 @@ const Checkout = () => {
                         </div>
                         <div className="payment_method_section">
                             <div className="payment_method">
-                                <h4>Payment Method</h4>
-                                <div className="payment_method_options">
-                                    <div className="payment_method_option">
-                                        <FormControlLabel className="payment_method_option_label"   control={<Checkbox />} label="Pay with Amazon Pay" />
-                                    </div>
+                                <div className="payment_method_option">
+                                    <Paypal amount={total} user={user}/>
                                 </div>
                             </div>
                         </div>
@@ -197,9 +211,6 @@ const Checkout = () => {
                                                 </select>
                                                 <label htmlFor="floatingSelect">Quantity</label>
                                             </div>
-                                            <span>
-                                                <input type="submit" className="btn btn-danger btn-sm" value="Delete" onClick={()=> {onDeleteHandler(i)}}/>
-                                            </span>
                                         </span>
                                     </span>
                                     <span className="prod-price">
@@ -210,7 +221,7 @@ const Checkout = () => {
                         : <h2 style= {{display: 'flex', justifyContent: 'center', alignItems: 'center', height: 100}}>Your Cart is empty! </h2> }
                     </div>
                 </div>
-
+                
                 <div className="checkout-box">
                     <div className="total">
                         <span>Subtotal ({cart?.length < 2 && cart?.length > 1 ? <span>{`${cart.length} item`}</span>  : <span>{`${cart.length} items`}</span>}):</span>
@@ -219,7 +230,7 @@ const Checkout = () => {
                     <FormGroup style={{textAlign: "left"}}>
                         <FormControlLabel control={<Checkbox defaultChecked />} label="This order contains a gift" />
                     </FormGroup>
-                    <Link to="/displayCheckout" id="check-out" className="btn btn-warning">Place Order</Link>
+                    <button onClick={placeOrder} id="check-out" className="btn btn-warning">Place Order</button>
                 </div>
             </div>
         </div>

@@ -1,7 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Switch, Route} from 'react-router-dom';
-import axios from 'axios';
 import "./css/Header.css";
 import Main from './views/Main';
 import YourAccount from './views/YourAccount';
@@ -12,21 +11,20 @@ import Update from './views/Update';
 import ViewProduct from './views/ViewProduct';
 import YourCart from './views/YourCart';
 import CartContext from './context/CartContext';
-import { Fragment, useState, useEffect } from 'react';
+import { Fragment, useState } from 'react';
 import Login from './views/Login';
 import Header from './components/Header';
 import Register from './views/Register';
 import AuthContext from './context/AuthContext';
-import { useHistory } from 'react-router-dom';
 import Checkout from './views/Checkout';
-var store = require('store')
+import OrderConfirmation from './views/OrderConfirmation';
+import Orders from './views/Orders';
 
 
 function App() {
 
   const [basket, setBasket] = useState([]);
   const [loggedInUser, setLoggedInUser] = useState({});
-  //const cart = store.set('cart', basket);
 
   return (
     <div className="App">
@@ -49,6 +47,10 @@ function App() {
           <Header />
           <YourAccount />
         </Route>
+        <Route exact path="/orders">
+          <Header />
+          <Orders />
+        </Route>
         <Route exact path="/view/:_id">
           <Header />
           <ViewProduct />
@@ -67,6 +69,10 @@ function App() {
           <Header />
           <YourCart />
         </Route>
+        <Route exact path="/orderConfirmation">
+          <Header />
+          <OrderConfirmation />
+        </Route>
       <Route path="/signin">
         <Login />
       </Route>
@@ -74,7 +80,7 @@ function App() {
         <Register />
       </Route>
       <Route path="/displayCheckout">
-        <Checkout />
+          <Checkout />
       </Route>
       </Fragment>
     </Switch>

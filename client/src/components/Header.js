@@ -33,7 +33,7 @@ const Header = (props) => {
                 if(res.data.results){
                     //this means the user is logged in and can accees this page
                     setLoggedInUser(res.data.results)
-                    store.set('user', loggedInUser)
+                    store.set('user', res.data.results)
                 }
             })
             .catch(err=>{

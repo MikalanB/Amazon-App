@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 // conn1.once("open", () => console.log("Connection established"))
 
 const OrderSchema = new mongoose.Schema({
-    userID: {
+    orderID: {
         type: String,
         required: [true, "A User ID has to be provided to tie the order information to."]
     },
@@ -23,14 +23,8 @@ const OrderSchema = new mongoose.Schema({
         required: [true, "A Delivery Address has to be provided."]
     },
 
-    bill: {
-        type: Number,
-        required: [true, "A billind amount needs to be provided."],
-        default: 0
-    },
-
     order_total: {
-        type: Number,
+        type: String,
     },
 
     user_id: {

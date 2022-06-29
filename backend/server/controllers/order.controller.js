@@ -37,3 +37,10 @@ module.exports.updateOne = (req, res) => {
             message: "that didn't work!", err
         }))
 }
+
+module.exports.findUserOrders = (req, res) => {
+    Order.find({user_id: req.params.user_id})
+            .populate("user_id")
+            .then(results => res.json(results))
+            .catch(err => res.status(400).json({ message: "Unable to find any orders."}))
+}

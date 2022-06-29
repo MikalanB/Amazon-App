@@ -1,0 +1,29 @@
+.orders-container {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    margin-top: 30px;
+    margin-left: 60px;
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.order-header-left {
+    display: flex;
+    width: 40%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.order-header-right {
+    display: flex;
+    width: 40%;
+}
