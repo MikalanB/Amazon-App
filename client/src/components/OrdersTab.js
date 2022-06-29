@@ -40,7 +40,7 @@ function TabPanel(props) {
 
     export default function OrdersTab(props) {
     
-    const {allOrders} = props;
+    const {allOrdersTab, buyAgainTab} = props;
     const [value, setValue] =       React.useState(0);
 
     const handleChange = (event, newValue) => {
@@ -57,10 +57,10 @@ function TabPanel(props) {
             </Tabs>
         </Box>
         <TabPanel value={value} index={0}>
-            {allOrders}
+            {allOrdersTab}
         </TabPanel>
         <TabPanel value={value} index={1}>
-            Buy Again
+            {buyAgainTab}
         </TabPanel>
         <TabPanel value={value} index={2}>
             Digital Orders

@@ -16,8 +16,8 @@ const Orders =() => {
     useEffect(()=>{
         axios.get(`http://localhost:8000/api/orders/user/${user._id}`)
             .then(res=> {
-                console.log("found orders")
-                console.log(res.data)
+                // console.log("found orders")
+                // console.log(res.data)
                 setOrders(res.data)
             })
             .catch (err => {console.log(err)})
@@ -54,6 +54,8 @@ const Orders =() => {
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;  
 
+    console.log(orders.map(order => { return order.items_ordered[0].map(item => { return item.title }) }))
+
 const allOrders = orders.map((item, i) => {
         return <div className="order" key={i}>
             <span className="order-header">
@@ -68,7 +70,7 @@ const allOrders = orders.map((item, i) => {
                     </span>
                     <span className="container">
                         <p className="order-info-line-1">SHIP TO</p>
-                        <Button aria-describedby={id} variant="text" onClick={handleClick} sx={{backgroundColor: "white"}}>
+                        <Button aria-describedby={id} variant="text" onClick={handleClick} sx={{backgroundColor: "lightgray", height: "38px", width: "200px"}}>
                         {item.user_id.firstName} {item.user_id.lastName}
                         </Button>
                         <Popover
@@ -81,7 +83,7 @@ const allOrders = orders.map((item, i) => {
                             horizontal: 'left',
                             }}
                         >
-                            <Typography sx={{ p: 2, display: 'flex', flexDirection: 'column' }}><span>{item.deliveryAddress[2]},</span> <span>{item.deliveryAddress[3]},</span> <span>{item.deliveryAddress[4]},</span> <span>{item.deliveryAddress[5]} {item.deliveryAddress[6]}</span></Typography>
+                            <Typography sx={{ p: 2, display: 'flex', flexDirection: 'column' }}><strong>{item.deliveryAddress[0]},</strong> <span>{item.deliveryAddress[2]},</span> <span>{item.deliveryAddress[3]},</span> <span>{item.deliveryAddress[4]},</span> <span>{item.deliveryAddress[5]} {item.deliveryAddress[6]}</span></Typography>
                         </Popover>
                     </span>
                 </span>
@@ -95,25 +97,40 @@ const allOrders = orders.map((item, i) => {
             <span className="order-info-container">
                 <span className="order-info-left">
                     <span className="order_information">
-                        <p>On its way</p>
-                        <p>Your order has been placed and is on its way to you!</p>
-                        {item.items_ordered.map((prod, i) => {
-                            return <div key={i} className="prod">
-                                <p>{prod.productImgURL[0]}</p>
-                                <p>{prod.title}</p>
-                            </div>
-                        })}
+                        <span className="order_status">
+                            <span className="order_status_line1">On its way</span>
+                            <span className="order_status_line2">Your order is on is getting ready to be shipped!</span>
+                        </span>
+                        <span>{item.items_ordered[0].map((prod, i) => {
+                            return <Link to={`/view/${prod._id}`}  key={i} className="order_item">
+                                <img className="order_prod_img" src={prod.productImgURL[0]} alt="product image"/>
+                                <span className="order_prod_title">{prod.title}</span>
+                            </Link>
+                        })}</span>
                     </span>
+                </span>
+                <span className="order-info-right">
+                    <button className="track_package">Track Package</button>
                 </span>
             </span>
             </div>
     })
 
+    const buyAgain = orders.map(order => { return <div className="buyAgain_container"> { order.items_ordered[0].map(item => { 
+        return <span className="buyAgain_item">
+                    <img className="order_prod_img" src={item.productImgURL[0]} alt="product image"/>
+                    <span> {item.title }</span> 
+                    <span> {item.price} </span>
+                    { item.prime === true ? <img className="order_prime" src="https://m.media-amazon.com/images/G/01/prime/marketing/slashPrime/amazon-prime-delivery-checkmark._CB659998231_.png" alt="Prime verification" /> : ""}
+                    <button className="btn btn-warning"> Add to Cart</button>
+            </span>
+})}</div> })
+
     return (
         <div>
+            <h3 className="orders-label">Your Orders</h3>
             <div className="orders-container">
-                <h3>Your Orders</h3>
-                <OrdersTab allOrders={allOrders}/>
+                <OrdersTab allOrdersTab={allOrders} buyAgainTab={buyAgain}/>
             </div>
         </div>
     )

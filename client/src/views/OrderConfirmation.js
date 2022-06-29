@@ -42,7 +42,7 @@ const OrderConfirmation = () => {
 
     return(
         <div>
-            <div className="container-1">
+            <div className="container1">
                 <div className="order-confirm">
                     <CheckIcon sx={{color: "green"}}/>
                     <h3 style={{color: "green", marginLeft: '10px'}}>Thank you, your order has been placed</h3>
