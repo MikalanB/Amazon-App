@@ -7,6 +7,8 @@
 
 .checkoutLayout {
     display:flex;
+    justify-content: center;
+    margin-top: 10px;
 }
 
 .checkoutProduct__image {
@@ -104,36 +106,74 @@ margin-bottom: 5px;
 .prod-title {
     text-overflow: wrap;
     white-space: wrap;
-    width: 60px;
+    width: 100%;
     height: 40px;
     overflow: hidden;
     margin-top: 10px;
+    font-weight: bold;
 }
 
 .checkout-box {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-left: 30px;
+    justify-content: space-between;
+    margin-left: 40px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    width: 20%;
-    border-radius: 25px;
-    height: 300px;
+    width: 325px;
+    border-radius: 15px;
+    height: 420px;
 }
 
 #check-out {
-    margin-top: 30px;
-    width: 60%;
-    border-radius: 25px;
-    margin-bottom: 20px
+    width: 90%;
+    border-radius: 10px;
+    margin: 0px;
+    margin-top: 10px;
+}
+
+.checkout-conditions {
+    font-size: 12px;
+    width: 100%;
+    text-align: center;
+}
+
+.checkout-conditions > a {
+    color: #007185!important;
+    text-decoration: none;
+}
+
+.checkout-total {
+    width: 91%;
+}
+
+.prime-shipping-tip {
+    border-top: 1px solid whitesmoke;
+    background-color: #F0F2F2!important;  
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+.prime-shipping-tip > a {
+    text-decoration: none;
+    font-size: 12px;
+    color: #007185!important;
+}
+
+.prime-shipping-tip > p {
+    font-size: 12px;
 }
 
 .prod-price{
     margin-bottom: 160px;
     font-weight: bold;
     font-size: 20px;
-    color: #B12704!important
+    color: #B12704!important;
+    margin-right: 20px;
+}
+
+.prod_prime {
+    display: flex;
 }
 
 .total {

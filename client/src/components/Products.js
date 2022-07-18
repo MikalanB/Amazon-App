@@ -7,8 +7,6 @@ import { useHistory } from 'react-router-dom';
 const Products = (props) => {
     const [ products, setProducts ] = useState([])
 
-    const history = useHistory();
-
     useEffect(()=>{
         axios.get("http://localhost:8000/api/products/all")
             .then(res=> {

@@ -6,6 +6,7 @@ import OrdersTab from '../components/OrdersTab';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import moment from 'moment';
 var store = require('store')
 
 const Orders =() => {
@@ -23,15 +24,6 @@ const Orders =() => {
             .catch (err => {console.log(err)})
 
     }, [])
-
-    function join(t, a, s) {
-        function format(m) {
-            let f = new Intl.DateTimeFormat('en', m);
-            return f.format(t);
-        }
-        return a.map(format).join(s);
-        }
-    let a = [{month: 'long'}, {day: 'numeric'}, {year: 'numeric'}];
 
     function shuffle(a) {
         for (let i = a.length - 1; i > 0; i--) {
@@ -54,7 +46,8 @@ const Orders =() => {
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;  
 
-    console.log(orders.map(order => { return order.items_ordered[0].map(item => { return item.title }) }))
+    let customer_items_ordered = []
+    customer_items_ordered.push(orders.map(order => { return order.items_ordered[0].map(item => { return item.title }) }))
 
 const allOrders = orders.map((item, i) => {
         return <div className="order" key={i}>
@@ -62,7 +55,7 @@ const allOrders = orders.map((item, i) => {
                 <span className="order-header-left">
                     <span className="container">
                         <p className="order-info-line-1">ORDER PLACED</p>
-                        <p className="order-info-line-2">{join(new Date(item.order_date), a, ' ')}</p>
+                        <p className="order-info-line-2">{moment(item.order_date).format('LL')}</p>
                     </span>
                     <span className="container">
                         <p className="order-info-line-1">TOTAL</p>
@@ -70,7 +63,7 @@ const allOrders = orders.map((item, i) => {
                     </span>
                     <span className="container">
                         <p className="order-info-line-1">SHIP TO</p>
-                        <Button aria-describedby={id} variant="text" onClick={handleClick} sx={{backgroundColor: "lightgray", height: "38px", width: "200px"}}>
+                        <Button aria-describedby={id} variant="text" onClick={handleClick} sx={{backgroundColor: "#F0F2F1", height: "30px", width: "200px", color: "#007185"}}>
                         {item.user_id.firstName} {item.user_id.lastName}
                         </Button>
                         <Popover
@@ -90,7 +83,7 @@ const allOrders = orders.map((item, i) => {
                 <span className="order-header-right">
                     <span className="container">
                         <span className="order-info-line-1">ORDER # {item.orderID}</span>
-                        <Link to="/order-details"><p>View order details</p></Link>
+                        <Link to={`/view/order/${item._id}`} style={{color: "#007185", textDecoration: "none"}}><p>View order details</p></Link>
                     </span>
                 </span>
             </span>
@@ -111,6 +104,7 @@ const allOrders = orders.map((item, i) => {
                 </span>
                 <span className="order-info-right">
                     <button className="track_package">Track Package</button>
+                    <button className="track_package">Get Help</button>
                 </span>
             </span>
             </div>
@@ -119,10 +113,10 @@ const allOrders = orders.map((item, i) => {
     const buyAgain = orders.map(order => { return <div className="buyAgain_container"> { order.items_ordered[0].map(item => { 
         return <span className="buyAgain_item">
                     <img className="order_prod_img" src={item.productImgURL[0]} alt="product image"/>
-                    <span> {item.title }</span> 
-                    <span> {item.price} </span>
+                    <span className="item-title"> {item.title }</span> 
+                    <span> ${item.price} </span>
                     { item.prime === true ? <img className="order_prime" src="https://m.media-amazon.com/images/G/01/prime/marketing/slashPrime/amazon-prime-delivery-checkmark._CB659998231_.png" alt="Prime verification" /> : ""}
-                    <button className="btn btn-warning"> Add to Cart</button>
+                    <button className="btn btn-warning" id="buyAgain-add-to-cart"> Add to Cart</button>
             </span>
 })}</div> })
 

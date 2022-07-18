@@ -19,6 +19,7 @@ import AuthContext from './context/AuthContext';
 import Checkout from './views/Checkout';
 import OrderConfirmation from './views/OrderConfirmation';
 import Orders from './views/Orders';
+import OrderDetails from './views/OrderDetails';
 
 
 function App() {
@@ -81,6 +82,10 @@ function App() {
       </Route>
       <Route path="/displayCheckout">
           <Checkout />
+      </Route>
+      <Route path="/view/order/:_id">
+          <Header />
+          <OrderDetails />
       </Route>
       </Fragment>
     </Switch>

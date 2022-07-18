@@ -53,17 +53,15 @@ function TabPanel(props) {
             <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
             <Tab label="Orders" {...a11yProps(0)} />
             <Tab label="Buy Again" {...a11yProps(1)} />
-            <Tab label="Digital Orders" {...a11yProps(2)} />
             </Tabs>
         </Box>
         <TabPanel value={value} index={0}>
             {allOrdersTab}
         </TabPanel>
         <TabPanel value={value} index={1}>
-            {buyAgainTab}
-        </TabPanel>
-        <TabPanel value={value} index={2}>
-            Digital Orders
+            <span className="test">
+                <span className="test-2">{buyAgainTab}</span>
+            </span>
         </TabPanel>
         </Box>
     );

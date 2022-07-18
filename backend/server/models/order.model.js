@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const OrderSchema = new mongoose.Schema({
     orderID: {
         type: String,
-        required: [true, "A User ID has to be provided to tie the order information to."]
+        required: [true, "An order ID has to be provided to tie the order information to."]
     },
 
     order_date: {

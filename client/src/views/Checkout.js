@@ -125,7 +125,7 @@ const Checkout = () => {
                 <LockIcon sx={{marginRight: "10px"}}/>
             </div>
             <div className="checkoutLayout">
-                <div className="checkout_information">
+                <div className="checkout_information">   
                     <div className="shipping__container">
                         <div className="checkout__header" style={{marginTop: "10px"}}>
                             <h4>1</h4>
@@ -178,20 +178,15 @@ const Checkout = () => {
                                         <img src={item.productImgURL} alt={item.title} className="product-image"/>
                                     </span>
                                     <span className="split">
-                                        <span className="prod-title">
-                                            {item.title}
-                                        </span>
-                                        <span className="prod-brand">
-                                            by: {item.brand}
-                                        </span>
-                                        <span>
-                                        {
-                                            item.quantity < 10 ? <h4 style={{ color: 'red'}}>Only {item.quantity} left in stock!</h4>
-                                            : item.quantity > 10 && item.quantity < 30 ? <h4 style={{ color: 'red'}}>Low in Stock</h4>
-                                            : <h4 style={{ color: 'green'}}>In Stock</h4>
-                                        }
-                                        </span>
-                                        <span className="prod-prime">
+                                        <div className="d-flex flex-column mx-auto">
+                                            <span className="prod-title">
+                                                {item.title}
+                                            </span>
+                                            <span className="prod-brand">
+                                                By: {item.brand}
+                                            </span>
+                                        </div>
+                                        <span className="prod_prime">
                                             <span>{ item.prime === true 
                                                 ? <span>
                                                     <img className="prime" src="https://m.media-amazon.com/images/G/01/prime/marketing/slashPrime/amazon-prime-delivery-checkmark._CB659998231_.png" alt="Prime verification" />
@@ -202,7 +197,7 @@ const Checkout = () => {
                                         </span>
                                         <span className="prod-quantity">
                                             <div className="form-floating mb-3 w-50">
-                                                <select className="form-select" aria-label="Default select example" value={cart[i].prodQty} name="qty" onChange={(event) => onUpdateQty(event.target.value, i)}>
+                                                <select className="form-select" aria-label="Default select example" value={cart[i].prodQty} name="qty" onChange={(event) => onUpdateQty(event.target.value, i)} disabled>
                                                     <option>1</option>
                                                     <option>2</option>
                                                     <option>3</option>
@@ -223,14 +218,47 @@ const Checkout = () => {
                 </div>
                 
                 <div className="checkout-box">
-                    <div className="total">
-                        <span>Subtotal ({cart?.length < 2 && cart?.length > 1 ? <span>{`${cart.length} item`}</span>  : <span>{`${cart.length} items`}</span>}):</span>
-                        <span className="price">${total}</span>
+                    <button onClick={placeOrder} id="check-out" className="btn btn-warning">Place your order</button>
+                    <p className="checkout-conditions">By placing your order, you agree to Mikalan Amazon Clone's <a href="#">privacy notice</a> and <a href="#">conditions of use.</a></p>
+                    <Divider sx={{width: "91%"}} />
+                    <div className="checkout-total">
+                        <p style={{fontSize: "18px", fontWeight: "bold", marginBottom: "10px"}}>Order Summary</p>
+                        <span className="order-section-header-line">                  
+                        {
+                            cart?.length < 2 && cart?.length >= 1 ? <p className="cart-summary-line">Item ({cart?.length}):</p>
+                            : <p className="cart-summary-line">Items ({cart?.length}):</p>
+                        }
+                        <p>${total}</p>
+                        </span>
+                        <span className="order-section-header-line">
+                            <p className="cart-summary-line">Shipping & handling: </p>
+                            <p className="cart-summary-second-line">$0.00</p>
+                        </span>
+                        <span>
+                        <span style={{display: "flex", justifyContent: "flex-end"}}>
+                            <Divider sx={{width: "45px", marginTop: "5px", marginBottom: "5px"}} align="right"/>
+                        </span>
+                        </span>
+                        <span className="order-section-header-line">
+                            <p className="cart-summary-line">Total before tax: </p>
+                            <p className="cart-summary-second-line">${total}</p>
+                        </span>
+                        <span className="order-section-header-line">
+                            <p className="cart-summary-line">Estimated tax to be collected: </p>
+                            <p className="cart-summary-second-line">$0.00</p>
+                        </span>
+                        <span>
+                            <Divider sx={{marginTop: "5px"}}/>
+                        </span>
+                        <span className="order-section-header-line" style={{marginTop: "5px"}}>
+                            <p className="price">Order total: </p>
+                            <p className="price">${total}</p>
+                        </span>
                     </div>
-                    <FormGroup style={{textAlign: "left"}}>
-                        <FormControlLabel control={<Checkbox defaultChecked />} label="This order contains a gift" />
-                    </FormGroup>
-                    <button onClick={placeOrder} id="check-out" className="btn btn-warning">Place Order</button>
+                    <div className="prime-shipping-tip">
+                        <a href="#">How are shipping costs calculated?</a>
+                        <p>Prime shipping benefits have been applied to your order.</p>
+                    </div>
                 </div>
             </div>
         </div>

@@ -11,8 +11,8 @@ const AddressForm = (props) => {
     return(
     <div>
         { form.address1?.length > 1 
-        ? <button type="button" className="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal"> Change Address</button>
-        : <button type="button" className="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal"><AddIcon/> Add a new Address</button>}
+        ? <button type="button" className="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal" style={{color: "#007185", textDecoration: "none"}}> Change Address</button>
+        : <button type="button" className="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal" style={{color: "#007185", textDecoration: "none"}}><AddIcon/> Add a new Address</button>}
         <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog">
             <div className="modal-content">

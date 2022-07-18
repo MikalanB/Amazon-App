@@ -205,8 +205,6 @@ const ViewProduct = (props) => {
                             : ""}
                             </span>
                         </div>
-                        {/* <span>Buy new: </span>
-                        <span>{product.price}</span> */}
                 </div>
                 <div style={{height: "50px"}}>
                     {
