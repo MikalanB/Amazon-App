@@ -16,11 +16,6 @@ margin: 0 20px;
 margin-top: 18px;
 }
 
-.header__logo:hover {
-    border: 1px solid white;
-    padding-top: 12px;
-}
-
 .header__searchbox {
 display: flex;
 flex: 1;
