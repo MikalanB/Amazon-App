@@ -11,7 +11,7 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     width: 60%;
     padding-top: 20px;
-    border-radius: 25px;
+    border-radius: 10px;
 }
 
 .shopping-cart-title {
@@ -19,7 +19,7 @@
     margin-bottom: 20px;
 }
 
-.prod-container {
+.prod_container {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -37,16 +37,16 @@
     object-fit: contain;
 }
 
-.prod-title {
+.prod_title {
     text-overflow: wrap;
     white-space: wrap;
-    width: 60px;
-    height: 40px;
+    width: 100%;
+    height: 50px;
     overflow: hidden;
     margin-top: 10px;
 }
 
-.checkout-box {
+.checkout_box {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -54,7 +54,7 @@
     margin-left: 30px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     width: 20%;
-    border-radius: 25px;
+    border-radius: 10px;
     height: 300px;
 }
 

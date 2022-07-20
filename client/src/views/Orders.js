@@ -110,21 +110,21 @@ const allOrders = orders.map((item, i) => {
             </div>
     })
 
-    const buyAgain = orders.map(order => { return <div className="buyAgain_container"> { order.items_ordered[0].map(item => { 
-        return <span className="buyAgain_item">
-                    <img className="order_prod_img" src={item.productImgURL[0]} alt="product image"/>
-                    <span className="item-title"> {item.title }</span> 
-                    <span> ${item.price} </span>
-                    { item.prime === true ? <img className="order_prime" src="https://m.media-amazon.com/images/G/01/prime/marketing/slashPrime/amazon-prime-delivery-checkmark._CB659998231_.png" alt="Prime verification" /> : ""}
-                    <button className="btn btn-warning" id="buyAgain-add-to-cart"> Add to Cart</button>
-            </span>
-})}</div> })
+//     const buyAgain = orders.map(order => { return <div className="buyAgain_container"> { order.items_ordered[0].map(item => { 
+//         return <span className="buyAgain_item">
+//                     <img className="order_prod_img" src={item.productImgURL[0]} alt="product image"/>
+//                     <span className="item-title"> {item.title }</span> 
+//                     <span> ${item.price} </span>
+//                     { item.prime === true ? <img className="order_prime" src="https://m.media-amazon.com/images/G/01/prime/marketing/slashPrime/amazon-prime-delivery-checkmark._CB659998231_.png" alt="Prime verification" /> : ""}
+//                     <button className="btn btn-warning" id="buyAgain-add-to-cart"> Add to Cart</button>
+//             </span>
+// })}</div> })
 
     return (
         <div>
             <h3 className="orders-label">Your Orders</h3>
             <div className="orders-container">
-                <OrdersTab allOrdersTab={allOrders} buyAgainTab={buyAgain}/>
+                <OrdersTab allOrdersTab={allOrders}/>
             </div>
         </div>
     )

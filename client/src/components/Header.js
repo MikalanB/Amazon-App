@@ -124,43 +124,43 @@ const Header = (props) => {
                     <Box sx={{ display: 'flex', alignItems: 'center', marginLeft: '10px', marginRight: '20px', width: '100%' }}>
                         <TemporaryDrawer userProp = {loggedInUser} logoutProp= {logout}/>
                         <List sx={{ display: 'flex', alignItems: 'center' }}>
-                            <ListItem button component={Link} to="/best-sellers">
+                            <ListItem button component={Link} to="#">
                                 <ListItemText primary="Best Sellers" className="menu-list" primaryTypographyProps={{ fontSize: '14px' }} />
                             </ListItem>
-                            <ListItem button component={Link} to="/best-sellers">
+                            <ListItem button component={Link} to="#">
                                 <ListItemText primary="Amazon Basics" className="menu-list" primaryTypographyProps={{ fontSize: '14px' }} />
                             </ListItem>
-                            <ListItem button component={Link} to="/best-sellers">
+                            <ListItem button component={Link} to="#">
                                 <ListItemText primary="New Releases" className="menu-list" primaryTypographyProps={{ fontSize: '14px' }} />
                             </ListItem>
-                            <ListItem button component={Link} to="/customer-service">
+                            <ListItem button component={Link} to="#">
                                 <ListItemText primary="Customer Service" className="menu-list" primaryTypographyProps={{ fontSize: '14px' }} />
                             </ListItem>
-                            <ListItem button component={Link} to="/best-sellers">
+                            <ListItem button component={Link} to="#">
                                 <ListItemText primary="Today's Deal" className="menu-list" primaryTypographyProps={{ fontSize: '14px' }} />
                             </ListItem>
-                            <ListItem button component={Link} to="/best-sellers">
+                            <ListItem button component={Link} to="#">
                                 <ListItemText primary="Prime" className="menu-list" primaryTypographyProps={{ fontSize: '14px' }} />
                             </ListItem>
-                            <ListItem button component={Link} to="/best-sellers">
+                            <ListItem button component={Link} to="#">
                                 <ListItemText primary="Amaszon Home" className="menu-list" primaryTypographyProps={{ fontSize: '14px' }} />
                             </ListItem>
-                            <ListItem button component={Link} to="/best-sellers">
+                            <ListItem button component={Link} to="#">
                                 <ListItemText primary="Books" className="menu-list" primaryTypographyProps={{ fontSize: '14px' }} />
                             </ListItem>
-                            <ListItem button component={Link} to="/best-sellers">
+                            <ListItem button component={Link} to="#">
                                 <ListItemText primary="Music" className="menu-list" primaryTypographyProps={{ fontSize: '14px' }} />
                             </ListItem>
-                            <ListItem button component={Link} to="/best-sellers">
+                            <ListItem button component={Link} to="#">
                                 <ListItemText primary="Registry" className="menu-list" primaryTypographyProps={{ fontSize: '14px' }} />
                             </ListItem>
-                            <ListItem button component={Link} to="/best-sellers">
+                            <ListItem button component={Link} to="#">
                                 <ListItemText primary="Fashion" className="menu-list" primaryTypographyProps={{ fontSize: '14px' }} />
                             </ListItem>
-                            <ListItem button component={Link} to="/best-sellers">
+                            <ListItem button component={Link} to="#">
                                 <ListItemText primary="Kindle Books" className="menu-list" primaryTypographyProps={{ fontSize: '14px' }} />
                             </ListItem>
-                            <ListItem button component={Link} to="/best-sellers">
+                            <ListItem button component={Link} to="#">
                                 <ListItemText primary="Gift Cards" className="menu-list" primaryTypographyProps={{ fontSize: '14px' }} />
                             </ListItem>
                         </List>

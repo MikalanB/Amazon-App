@@ -69,7 +69,7 @@ export default function TemporaryDrawer(props) {
             <ListItem sx={{marginTop: "10px", marginLeft: '10px'}}>
                 <h5><strong>Shop By Department </strong></h5>
             </ListItem>
-            {['Clothin, Shoes, Jewelry & Watches', 'Books', 'Movies, Music & Games', 'Electronics', "See All"].map((text, index) => (
+            {['Clothing, Shoes, Jewelry & Watches', 'Books', 'Movies, Music & Games', 'Electronics', "See All"].map((text, index) => (
             <ListItem button key={text}>
                 <ListItemText primary={text} sx={{marginLeft: '10px'}}/>
             </ListItem>
@@ -80,7 +80,7 @@ export default function TemporaryDrawer(props) {
             <ListItem sx={{marginTop: "10px", marginLeft: '10px'}}>
                 <h5><strong>Programs & Features</strong></h5>
             </ListItem>
-            {['Whole Foods Market', 'Pharmacy', 'Amazon Physical Stores', "Subscrib and Save", 'See All'].map((text, index) => (
+            {['Whole Foods Market', 'Pharmacy', 'Amazon Physical Stores', "Subscribe and Save", 'See All'].map((text, index) => (
             <ListItem button key={text}>
                 <ListItemText primary={text} sx={{marginLeft: '10px'}} />
             </ListItem>

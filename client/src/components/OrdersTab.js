@@ -51,18 +51,18 @@ function TabPanel(props) {
         <Box sx={{ width: '100%' }}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
             <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-            <Tab label="Orders" {...a11yProps(0)} />
-            <Tab label="Buy Again" {...a11yProps(1)} />
+            <Tab label="Orders" {...a11yProps(0)} style={{color: "#007185"}} />
+            {/* <Tab label="Buy Again" {...a11yProps(1)} /> */}
             </Tabs>
         </Box>
         <TabPanel value={value} index={0}>
             {allOrdersTab}
         </TabPanel>
-        <TabPanel value={value} index={1}>
+        {/* <TabPanel value={value} index={1}>
             <span className="test">
                 <span className="test-2">{buyAgainTab}</span>
             </span>
-        </TabPanel>
+        </TabPanel> */}
         </Box>
     );
 }

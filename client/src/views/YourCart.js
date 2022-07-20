@@ -61,22 +61,24 @@ const YourCart = (props) => {
                 <div className="cart-container">
                     { cart?.length !== 0 ? <span>
                         {cart.map((item, i) => {
-                            return <div key={i} className="prod-container">
+                            return <div key={i} className="prod_container">
                                 <span>
                                     <img src={item.productImgURL} alt={item.title} className="product-image"/>
                                 </span>
                                 <span className="split">
-                                    <span className="prod-title">
-                                        {item.title}
-                                    </span>
-                                    <span className="prod-brand">
-                                        by: {item.brand}
+                                    <span className="d-flex flex-column w-100">                                        
+                                        <span className="prod_title">
+                                            {item.title}
+                                        </span>
+                                        <span className="prod_brand">
+                                            by: {item.brand}
+                                        </span>
                                     </span>
                                     <span>
                                     {
-                                        item.quantity < 10 ? <h4 style={{ color: 'red'}}>Only {item.quantity} left in stock!</h4>
-                                        : item.quantity > 10 && item.quantity < 30 ? <h4 style={{ color: 'red'}}>Low in Stock</h4>
-                                        : <h4 style={{ color: 'green'}}>In Stock</h4>
+                                        item.quantity < 10 ? <h5 style={{ color: 'red', margin: "0px"}}>Only {item.quantity} left in stock!</h5>
+                                        : item.quantity > 10 && item.quantity < 30 ? <h5 style={{ color: 'red', margin: "0px"}}>Low in Stock</h5>
+                                        : <h5 style={{ color: 'green', margin: "0px"}}>In Stock</h5>
                                     }
                                     </span>
                                     <span className="prod-prime">
@@ -112,7 +114,7 @@ const YourCart = (props) => {
                     : <h2 style= {{display: 'flex', justifyContent: 'center', alignItems: 'center', height: 100}}>Your Cart is empty! </h2> }
                 </div>
             </div>
-            <div className="checkout-box">
+            <div className="checkout_box">
                 <div className="total">
                     <span>Subtotal ({cart?.length < 2 && cart?.length > 1 ? <span>{`${cart.length} item`}</span>  : <span>{`${cart.length} items`}</span>}):</span>
                 <span className="price" >
