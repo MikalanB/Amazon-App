@@ -13,8 +13,7 @@ This application is a clone of the Amazon Website. This project is a passion pro
 - Material UI
 - StoreJS (local storage NPM package)
 - VS Code Editor
-- Stripe API 
-- socket.io Client (Coming Soon!)
+- Paypal API 
 - AWS EC2 for deployment (comming soon!)
 
 # Features currently present in the app (STABLE):
@@ -25,16 +24,10 @@ This application is a clone of the Amazon Website. This project is a passion pro
 4. Display the total bill of the cart and update it as soon as the cart is updated by the user.
 5. StoreJS Local Storage to store the JWT so that only logged-in users are allowed to buy items.
 6. Search Function - this allows customers to search for products currently available for purchase
-
-
-# Features in Progress:
-
- 1. 🔨 Implementation of Customer Service Feature to allow users to speak with a representative about their orders
- 2. 🔨 Option to pay using Stripe Checkout and thus creating a new order and emptying the cart after payment is successful.
- 3. 🔨 Option to view all your past orders along with the bill amount for each.
+7. Option to pay using Paypal and thus creating a new order and emptying the cart after payment is successful.
   
   # How to Install 
-  *** PLEASE INSTALL NODEJS IF NOT ALREADY INSTALLED) ***
+  *** PLEASE INSTALL NODE.JS IF NOT ALREADY INSTALLED) ***
   1. Clone this repository or download the project folder to your computer from GitHub
   2. Open the project in VS Code or your desired IDE.
   3. Open two terminal windows
